@@ -1,12 +1,7 @@
 ---
 inherit: "./manifest-base.yml"
 applications:
-- services:
-  - "anura-newrelic-staging"
+- name: "references-shop"
   env:
     ENVIRONMENT: "staging"
-#   For apps which need a large stack when eg when jooq loads a large class hierarchy,
-#   increase the default stack to 512k from the default ( in java buildpack:
-#   https://github.com/cloudfoundry/java-buildpack/blob/master/config/open_jdk_jre.yml )
-#   JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {memory_sizes: {stack: 512k}}]'
-    JAVA_OPTS: "-Dnewrelic.config.app_name=\"anura-references-staging\" -Dnewrelic.config.labels=\"Environment:Staging;Product:Anura\" -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSClassUnloadingEnabled -XX:MaxGCPauseMillis=\"250\" -XX:OnOutOfMemoryError=\"kill -9 %p\" -Dsun.net.inetaddr.ttl=\"30\" -XX:-OmitStackTraceInFastThrow -Dsun.net.client.defaultReadTimeout=\"2000\" -Dsun.net.client.defaultConnectTimeout=\"2000\""
+    SERVICE_NAME: "references-shop"

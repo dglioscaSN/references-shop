@@ -1,3 +1,5 @@
+go-pipeline-group: Hackday
+ci-server-host: te-prod-go-01.springer-sbm.com
 language: "java"
 cf-artifact-file: "target/distributions/anura-references-${GO_PIPELINE_LABEL}.zip"
 environment-groups:

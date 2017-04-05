@@ -1,9 +1,7 @@
 ---
 inherit: "./manifest-base.yml"
 applications:
-- env:
+- name: "references-shop"
+  env:
     ENVIRONMENT: "test"
-#   For apps which need a large stack when eg when jooq loads a large class hierarchy,
-#   increase the default stack to 512k from the default ( in java buildpack:
-#   https://github.com/cloudfoundry/java-buildpack/blob/master/config/open_jdk_jre.yml )
-#   JBP_CONFIG_OPEN_JDK_JRE: '[memory_calculator: {memory_sizes: {stack: 512k}}]'
+    SERVICE_NAME: "references-shop"
