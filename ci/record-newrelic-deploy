@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+readonly PIPELINE_NAME="$( basename $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )"
+readonly APP_NAME="${PIPELINE_NAME}-${TARGET_ENVIRONMENT_NAME}"
+readonly BUILD_VERSION="${GO_PIPELINE_LABEL:-unknown}"
+readonly GIT_REVISION="${GO_REVISION_GIT:-unknown}"
+
+newrelic-deployment \
+    --changelog "Git revision ${GIT_REVISION}" \
+    --description "Deployed from GO.CD pipeline" \
+    --user "GO.CD" \
+    "$APP_NAME" \
+    "$BUILD_VERSION"

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+readonly PROJECT=":$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)")"
+
+(
+    cd "$(dirname "${BASH_SOURCE[0]}")/.."
+    GIT_REVISION="${GO_REVISION_GIT:-LOCAL}" BUILD_VERSION="${GO_PIPELINE_LABEL:-LOCAL}" "./gradlew" ${GO_PIPELINE_LABEL:+-Pversion="${GO_PIPELINE_LABEL}"} clean ${PROJECT}:buildNeeded
+)

@@ -1,0 +1,14 @@
+# This Docker Compose configuration file is meant to be used with docker-env (http://tools-engineering.springer-sbm.com/).
+
+code:
+  image: "te-docker.docker-registry.tools.springer-sbm.com/docker-env-newrelic-deploy"
+  dns: *DNS
+  volumes:
+  - "..:/home/dev/code"
+  - "$HOME/.gradle:/home/dev/.gradle"
+
+deploy:
+  image: "te-docker.docker-registry.tools.springer-sbm.com/fig-env-deploy-to-cf-java8"
+  dns: *DNS
+  volumes:
+  - "..:/home/dev/code"

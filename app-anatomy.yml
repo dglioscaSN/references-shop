@@ -1,0 +1,17 @@
+language: "java"
+cf-artifact-file: "target/distributions/anura-references-${GO_PIPELINE_LABEL}.zip"
+environment-groups:
+- name: "test"
+  automatic-approval: true
+  environments:
+  - name: "test"
+    cf-space: "test"
+    manifest: "cloud-foundry/manifest-test.yml"
+- name: "staging"
+  environments:
+  - name: "staging"
+    manifest: "cloud-foundry/manifest-staging.yml"
+- name: "live"
+  environments:
+  - name: "live"
+    manifest: "cloud-foundry/manifest-live.yml"

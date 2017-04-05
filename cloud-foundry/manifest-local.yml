@@ -1,0 +1,7 @@
+---
+applications:
+- name: "anura-references"
+  env:
+    ENVIRONMENT: "local"
+    PORT: "8080"
+    SERVICE_NAME: "anura-references"
